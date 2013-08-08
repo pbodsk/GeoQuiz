@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +13,8 @@ public class QuizActivity extends Activity {
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
+    private ImageButton mNextButton;
+    private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
 
     private TrueFalse[] mQuestionBank = new TrueFalse[] {
@@ -48,14 +50,42 @@ public class QuizActivity extends Activity {
             }
         });
 
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                updateQuestion();
+                showNextQuestion();
             }
         });
+
+        mPreviousButton = (ImageButton) findViewById(R.id.previous_button);
+        mPreviousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPreviousQuestion();
+            }
+        });
+
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showNextQuestion();
+            }
+        });
+    }
+
+    private void showNextQuestion() {
+        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        updateQuestion();
+    }
+
+    private void showPreviousQuestion() {
+        if(mCurrentIndex == 0){
+            mCurrentIndex = mQuestionBank.length - 1;
+        } else {
+            mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+        }
+        updateQuestion();
     }
 
     private void updateQuestion() {
@@ -65,12 +95,9 @@ public class QuizActivity extends Activity {
 
     private void checkAnswer(boolean userPressedTrue){
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isTrueQuestion();
-
         int messageResId = userPressedTrue == answerIsTrue ? R.string.correct_toast : R.string.incorrect_toast;
         Toast.makeText(QuizActivity.this, messageResId, Toast.LENGTH_SHORT).show();
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -12,5 +12,6 @@
     <string name="false_button">Nay</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
+    <string name="previous_question_button">Previous</string>
     <string name="next_question_button">Next</string>
 </resources>
