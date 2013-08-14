@@ -44,7 +44,11 @@
             <file
                 path="/Users/jb3579/Documents/Programming/Java/Android/workspace/GeoQuizProject/GeoQuiz/src/main/res/values/strings.xml"
                 qualifiers="" >
+                <string name="cheat_button" >Cheat!
+                </string>
                 <string name="question_africa" >The source of the Nile River is in Egypt.
+                </string>
+                <string name="show_answer_button" >Show Answer
                 </string>
                 <string name="action_settings" >Settings
                 </string>
@@ -53,6 +57,8 @@
                 <string name="next_question_button" >Next
                 </string>
                 <string name="question_mideast" >The Suez Canal connects the Red Sea and the Indian Ocean.
+                </string>
+                <string name="warning_text" >Are you sure you want to do this?
                 </string>
                 <string name="false_button" >Nay
                 </string>
@@ -66,9 +72,11 @@
                 </string>
                 <string name="true_button" >Yay
                 </string>
-                <string name="correct_toast" >Correct!
+                <string name="judgment_toast" >Winners don\'t use drugs
                 </string>
                 <string name="previous_question_button" >Previous
+                </string>
+                <string name="correct_toast" >Correct!
                 </string>
             </file>
             <file
@@ -155,6 +163,11 @@
                 name="activity_quiz"
                 path="/Users/jb3579/Documents/Programming/Java/Android/workspace/GeoQuizProject/GeoQuiz/src/main/res/layout-land/activity_quiz.xml"
                 qualifiers="land"
+                type="layout" />
+            <file
+                name="activity_cheat"
+                path="/Users/jb3579/Documents/Programming/Java/Android/workspace/GeoQuizProject/GeoQuiz/src/main/res/layout/activity_cheat.xml"
+                qualifiers=""
                 type="layout" />
         </source>
         <source path="/Users/jb3579/Documents/Programming/Java/Android/workspace/GeoQuizProject/GeoQuiz/build/res/rs/debug" />
