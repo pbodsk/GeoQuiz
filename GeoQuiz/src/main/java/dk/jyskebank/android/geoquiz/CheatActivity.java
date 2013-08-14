@@ -14,15 +14,20 @@ public class CheatActivity extends Activity {
 
     public static final String EXTRA_ANSWER_IS_TRUE = "dk.jyskebank.android.geoquiz.answer_is_true";
     public static final String EXTRA_ANSWER_SHOWN = "dk.jyskebank.android.geoquiz.answer_shown";
+    private static final String KEY_ANSWER_SHOWN = "answer_shown";
     public boolean mAnswerIsTrue;
     private TextView mAnswerTextView;
     private Button mShowAnswerButton;
+    private boolean mAnswerIsShown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
-        setAnswerShownResult(false);
+        if(savedInstanceState != null){
+            mAnswerIsShown = savedInstanceState.getBoolean(KEY_ANSWER_SHOWN);
+        }
+        setAnswerShownResult(mAnswerIsShown);
         mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
 
         mAnswerTextView = (TextView) findViewById(R.id.answerTextView);
@@ -35,7 +40,8 @@ public class CheatActivity extends Activity {
                 } else {
                     mAnswerTextView.setText(R.string.false_button);
                 }
-                setAnswerShownResult(true);
+                mAnswerIsShown = true;
+                setAnswerShownResult(mAnswerIsShown);
             }
         });
     }
@@ -44,5 +50,11 @@ public class CheatActivity extends Activity {
         Intent data = new Intent();
         data.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
         setResult(RESULT_OK, data);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(KEY_ANSWER_SHOWN, mAnswerIsShown);
     }
 }

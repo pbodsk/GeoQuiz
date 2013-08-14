@@ -6,10 +6,12 @@ package dk.jyskebank.android.geoquiz;
 public class TrueFalse {
     private int mQuestion;
     private boolean mTrueQuestion;
+    private boolean mUserHasCheatedOnThisQuestion;
 
     public TrueFalse(int question, boolean trueQuestion){
         setQuestion(question);
         setTrueQuestion(trueQuestion);
+        mUserHasCheatedOnThisQuestion = false;
     }
 
     public int getQuestion() {
@@ -26,5 +28,13 @@ public class TrueFalse {
 
     public void setTrueQuestion(boolean trueQuestion) {
         mTrueQuestion = trueQuestion;
+    }
+
+    public boolean isUserHasCheatedOnThisQuestion() {
+        return mUserHasCheatedOnThisQuestion;
+    }
+
+    public void setUserHasCheatedOnThisQuestion(boolean userHasCheatedOnThisQuestion) {
+        mUserHasCheatedOnThisQuestion = userHasCheatedOnThisQuestion;
     }
 }
